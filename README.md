@@ -45,15 +45,6 @@ How to execute the application?
     <li>Building the project: `dotnet build`.</li>
 </ul>
 
-Screenshots:
+## Screenshots:
 
-![1](https://github.com/9x9x9x/jerello/assets/87396719/e08bc39c-0d77-496a-9de6-6191bcdcbb38)
-![2](https://github.com/9x9x9x/jerello/assets/87396719/afd61d6e-cc81-4d52-96ee-28c53163f4ea)
-![3](https://github.com/9x9x9x/jerello/assets/87396719/5be4d928-ef93-48d8-aa75-57cc7a86c2d5)
-![4](https://github.com/9x9x9x/jerello/assets/87396719/69e8bf34-6ce0-4ba0-8ee2-38ef3943818d)
-![5](https://github.com/9x9x9x/jerello/assets/87396719/5f912ef3-fa20-4529-82e7-c1a8068479b8)
-![6](https://github.com/9x9x9x/jerello/assets/87396719/83612314-7193-49de-901c-f71066c98396)
-![7](https://github.com/9x9x9x/jerello/assets/87396719/12733b60-3efb-4e01-9565-05ea245b8f63)
-![8](https://github.com/9x9x9x/jerello/assets/87396719/306c545f-4cd8-4a4e-a660-0ba0cec43738)
-![9](https://github.com/9x9x9x/jerello/assets/87396719/6bb0c189-503c-4e57-bd0f-86d1ea0f3d2d)
-![10](https://github.com/9x9x9x/jerello/assets/87396719/3de924fa-e00d-4f15-bb99-2f0e16e08cf9)
+See the Screenshots directory.
