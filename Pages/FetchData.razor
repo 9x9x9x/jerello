@@ -1,0 +1,80 @@
+﻿@page "/fetchdata"
+@using jerello.Data
+@using System.IO
+@using System.Text.Json
+@using System.Text.Json.Serialization
+
+<PageTitle>User Tasks</PageTitle>
+
+<h1>User Tasks</h1>
+
+<p>This component enlists all the tasks (serialized) associated with the current User at `Data/fetchdata.json`. Perfect for future integration over APIs.</p>
+
+Note: Currently this is not related to `/tasks` in any manner.
+<br /><br />
+<!-- <button class="btn btn-primary">Add New Task</button> -->
+
+@if (userTasksArray == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>Description</th>
+                <th>
+                    Deadline
+                </th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in userTasksArray)
+            {
+                <tr>
+                    <td>@forecast.Name</td>
+                    <td>@forecast.Description</td>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private UserTasks[]? userTasksArray;
+
+    protected override void OnInitialized()
+    {
+        var json = File.ReadAllText("Data/fetchdata.json");
+        var tempUserTaskArray = JsonSerializer.Deserialize<UserTasks[]>(json, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+            Converters = { new DateOnlyConverter() }
+        });
+        userTasksArray = tempUserTaskArray;
+    }
+
+    private class DateOnlyConverter : JsonConverter<DateOnly>
+    {
+        public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TryGetDateTime(out DateTime datetime))
+            {
+                return DateOnly.FromDateTime(datetime); // Explicitly convert DateTime to DateOnly
+            }
+            throw new JsonException($"Unable to convert value {reader.GetString()} to DateOnly.");
+        }
+
+        public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value.ToString("yyyy-MM-dd"));
+        }
+    }
+}

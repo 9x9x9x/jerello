@@ -1,0 +1,83 @@
+﻿@page "/tasks"
+@using jerello.Data
+@using System.IO
+@using System.Text.Json
+@using System.Text.Json.Serialization
+
+<h1>Task Board</h1>
+
+<p>This component enlists all the tasks associated with the current User.</p>
+
+@if (tasks == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Summary</th>
+                <th>Deadline</th>
+                <th>Completed?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in tasks)
+            {
+                <tr>
+                    <td>@task.Title</td>
+                    <td>@task.Description</td>
+                    <td>@task.Summary</td>
+                    <td>@task.Deadline</td>
+                    <td><input type="checkbox" class="form-check-input" @bind="task.IsDone" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<input type="text" class="form-control d-inline-block w-auto mr-2" placeholder="Title" @bind="newTask" />
+<input type="text" class="form-control d-inline-block w-auto mr-2" placeholder="Description" @bind="descTask" />
+<input type="text" class="form-control d-inline-block w-auto mr-2" placeholder="Summary" @bind="summaryTask" />
+<input type="text" class="form-control d-inline-block w-auto mr-2" placeholder="Deadline" @bind="deadlineTask" />
+<br /><br />
+<button class="btn btn-primary" type="button" @onclick="AddTask">Add New Task</button>
+
+<br /><br />
+<h2>Summary of Tasks</h2>
+
+<ul>
+<li>Tasks to do: @tasks.Count(task => !task.IsDone)</li>
+<li>Completed tasks: @tasks.Count(task => task.IsDone)</li>
+</ul>
+
+@code {
+    public List<TasksItem> tasks = new();
+    public string? newTask, nameTask, descTask, summaryTask, deadlineTask;
+
+    <!-- tasks.Add(new TasksItem { 
+        Title = "Performance Testing",
+        Description = "Measure and evaluate ServiceX's performance",
+        Summary = "Under simulated load to identify any potential bottlenecks or areas for optimization",
+        Deadline = "July 2, 2023"
+    }); -->
+
+
+    private void AddTask()
+    {
+        if (!string.IsNullOrWhiteSpace(newTask) 
+            && !string.IsNullOrWhiteSpace(descTask)
+            && !string.IsNullOrWhiteSpace(summaryTask)
+            && !string.IsNullOrWhiteSpace(deadlineTask))
+        {
+            tasks.Add(new TasksItem { Title = newTask, Description = descTask, Summary = summaryTask, Deadline = deadlineTask });
+            newTask = string.Empty;
+            descTask = string.Empty;
+            summaryTask = string.Empty;
+            deadlineTask = string.Empty;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+﻿@page "/about"
+
+<PageTitle>About</PageTitle>
+
+<h1>About</h1>
+
+<br />
+<h4>
+    Jerello is a Jira/Trello like Task management application::POC implementation. 
+</h4>
+<br />
+
+<p>
+    Story Points: 1
+</p>
+<p>
+    Tech Stack: 
+    
+    <ul>
+        <li>.NET/C#</li>
+        <li>Blazor/MSBuild (Build tool)</li>
+        <li>NUnit (Unit tests)</li>
+        <li>ASP.NET MVC (for APIs)</li>
+        <li>Razor Components (UI)</li>
+        <li>Bootstrap (Styling & CSS)</li>
+    </ul>
+</p>
+
+<p>
+    See <a href="../">home</a> page for completed tasks and more information.
+</p>
+@code {
+    private int AboutVisitCounter = 0;
+
+    private void aboutVisitTracker()
+    {
+        // Extend: Track userVisitedCounter here
+    }
+}

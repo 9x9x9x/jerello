@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "zyktbw4YxsYH5wLdZEuAUakFCWlaHrDn+Sjg9SfnFi9agvi1FRrb1b+/TrCevbsL1XSH1O1zka63fLFpFTet0w==",
+  "success": true,
+  "projectFilePath": "/workspace/jerello/jerello.csproj",
+  "expectedPackageFiles": [
+    "/home/gitpod/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/gitpod/.nuget/packages/netstandard.library/2.0.0/netstandard.library.2.0.0.nupkg.sha512",
+    "/home/gitpod/.nuget/packages/nunit/3.13.3/nunit.3.13.3.nupkg.sha512"
+  ],
+  "logs": []
+}

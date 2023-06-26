@@ -1,0 +1,55 @@
+﻿@page "/"
+
+<PageTitle>Jerello</PageTitle>
+
+<h1>Welcome to Jerello!</h1>
+<br />
+<h4>
+    Jerello is a Jira/Trello like Task management application::POC implementation. 
+</h4>
+<br />
+
+<p>
+    Story Points: 1
+</p>
+<p>
+    Tech Stack: .NET/C#, Blazor/MSBuild (Build), NUnit (tests), Azure APIs (for APIs), Razor (UI Components), Bootstrap (Styling & CSS)
+</p>
+
+<h3>Completed Tasks:</h3>
+
+<ul>
+    <li>Users can add new tasks to the task board.</li>
+    <li>Details include name, description, summary, deadline.</li>
+    <li>Users can see into tasks details.</li>
+    <li>Users can edit the boolean work states (ToDo, Completed).</li>
+    <li>Extensively Unit Tested code using NUnit (In Arrange, Act, Assert paradigm). This level of testing was not necessary for the scope, but is good long-term.</li>
+    <li>Summary of the tasks (automatically updated) - # of task todo and # of task completed.</li>
+    <li>Proper (Responsive, e.g. Navigation, Mobile devices) UI of home (/), /tasks, and /about routes (includes typography and icons).</li> 
+    <li>Router Error handling: 404 pages are customized to current design system.</li>
+    <li>JSON Serialization and Deserialization done from locally hosted data (/Data/fetchdata.json). Shhh, see the <a href="fetchdata">route</a>.</li>
+    <li>Customizable API endpoint (/apis/fetchdata) that will expose JSON data (on status 200, see Controllers/FetchDataController.cs). Currently suppressed by router error handler.</li>
+    <li>Wrote JavaScript code for column sorting, can be easily integrated to /tasks table (see Pages/_Host.cshtml).</li>
+    <li>Standard Practices: Unit Testing, Modularizated Codebase (Namespaces), Strong Typing, Tight Integration to Application/Business logic (Razor UI Components), Separation of concerns (directory tree).
+</ul>
+
+Major Incomplete Tasks:
+
+<ul>
+    <li>Azure APIs could not be integrated (data persistence). But, since API endpoints has been set, it can be integrated by Azure CLI</li>
+    <li>Complex handling of a task: Image allocation, Sorting implementation on UI</li>
+</ul>
+
+Since it was supposed to be a initial POC implementation, most of the complex tasks (image upload, CosmosDB integration) could not be implemented in deadline for the story. For a 1 story pointer, I'm feeling pretty good about it.
+
+<br /><br />
+How to execute the application?
+
+<ul>
+    <li>Install .NET 7 SDK from the official package manager. Linux: `sudo apt-get update && sudo apt-get install -y dotnet-sdk-7.0`</li>
+    <li>Install NUnit framework (`dotnet add package NUnit`)</li>
+    <li>Run the command `dotnet watch run` and open `http://localhost:5009/`</li>
+    <li>Building the project: `dotnet build`.</li>
+</ul>
+
+<SurveyPrompt Title="How did you like this web app?" />
